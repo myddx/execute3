@@ -1,0 +1,141 @@
+@ACL1000
+^LAYOUT   test1                              3 D.T,
+Total          PRINT       1   3 0  
+^LAYOUT   test2                              3 D.T,
+Total          PRINT       1   3 0  
+^LAYOUT   test3                              3 D.T,
+Total          PRINT       1   3 0  
+^LAYOUT   test4                              3 D.T,
+Total          PRINT       1   3 0  
+^FORMAT   test2                              test2                            "" "test2.FIL" 0 ASCII 
+[PARENT_FOLDER_ID] 0
+~.06/27/2013   05:55:31 allSegments extract all to ALL_SEGMENTS2
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:47:27 ALL_SEGMENTS2 EXTRACT RECORD TO "asdfafdas" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:51:46 test1 EXTRACT FIELDS Total TO "test22" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+[LASTVIEW] "Default_View"
+^REPORT   Default_View                       test2                            [RLINES] D.T,
+[PARENT_FOLDER_ID] -2
+[LINE] 1
+Total                PICTURE ""
+^FORMAT   test4                              test4                            "" "test4.FIL" 0 ASCII 
+[PARENT_FOLDER_ID] 0
+~.06/27/2013   05:55:31 allSegments extract all to ALL_SEGMENTS2
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:47:27 ALL_SEGMENTS2 EXTRACT RECORD TO "asdfafdas" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:51:46 test1 EXTRACT FIELDS Total TO "test22" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:36 test2 EXTRACT RECORD TO "test1" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:43 test1 EXTRACT RECORD TO "test3" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:52 test3 EXTRACT RECORD TO "test4" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+[LASTVIEW] "Default_View"
+^REPORT   Default_View                       test4                            D.T,
+[PARENT_FOLDER_ID] -2
+[SKIP] 0
+[TLINES] 0
+[RLINES] 1
+[LINE] 1
+Total                PICTURE ""
+^FORMAT   test1                              test1                            "" "test1.FIL" 0 ASCII 
+[PARENT_FOLDER_ID] 0
+~.06/27/2013   05:55:31 allSegments extract all to ALL_SEGMENTS2
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:47:27 ALL_SEGMENTS2 EXTRACT RECORD TO "asdfafdas" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:51:46 test1 EXTRACT FIELDS Total TO "test22" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:36 test2 EXTRACT RECORD TO "test1" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+[LASTVIEW] "Default_View"
+^REPORT   Default_View                       test1                            D.T,
+[PARENT_FOLDER_ID] -2
+[SKIP] 0
+[TLINES] 0
+[RLINES] 1
+[LINE] 1
+Total                PICTURE ""
+^FORMAT   test3                              test3                            "" "test3.FIL" 0 ASCII 
+[PARENT_FOLDER_ID] 0
+~.06/27/2013   05:55:31 allSegments extract all to ALL_SEGMENTS2
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:47:27 ALL_SEGMENTS2 EXTRACT RECORD TO "asdfafdas" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:51:46 test1 EXTRACT FIELDS Total TO "test22" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:36 test2 EXTRACT RECORD TO "test1" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+~.10-Jul-2013  15:52:43 test1 EXTRACT RECORD TO "test3" OPEN
+~Input : Records:46          Control Total:0                    
+~Output: Records:46          Control Total:0                    
+[LASTVIEW] "Default_View"
+^REPORT   Default_View                       test3                            D.T,
+[PARENT_FOLDER_ID] -2
+[SKIP] 0
+[TLINES] 0
+[RLINES] 1
+[LINE] 1
+Total                PICTURE ""
+^BATCH    New_Script2                        
+[PARENT_FOLDER_ID] 0
+COMMENT
+//ANALYTIC Analytic2
+Analytic number 2
+//FILE AXzip.xml
+//RESULT FILE *.NFO
+//RESULT FILE *.ZIP
+//RESULT LOG
+END
+
+SET SAFETY OFF
+
+o test1
+EXPORT FIELDS Total XLSX TO "test1"
+
+o test2
+
+EXPORT FIELDS Total XLSX TO "test2"
+
+o test3
+
+EXPORT FIELDS Total XLSX TO "test3"
+
+o test4
+
+EXPORT FIELDS Total XLSX TO "test4"
+
+
+
+com execute 'cmd /c msinfo32 /report "TEST.NFO"'
+com execute 'cmd /c msinfo32 /nfo "CONFLICTS.NFO" /categories +componentsproblemdevices+resourcesconflicts+resourcesforcedhardware'
+com execute 'cmd /c mkdir "./config"'
+com execute 'cmd /c copy %GERONIMO_HOME%\var\config .\config'
+com execute 'cmd /c mkdir "./log"'
+com execute 'cmd /c copy %GERONIMO_HOME%\var\log .\log'
+
+execute 'cmd /c ant -D"file.encoding=utf8" -f AXzip.xml'
+^LOGFILE  allSegments                         "" "allSegments.log"
+[PARENT_FOLDER_ID] 0
+^OPEN F "test4"
